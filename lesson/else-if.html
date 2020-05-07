@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <h1 v-if="type === 'A'">A</h1>
+        <h1 v-else-if="type === 'B'">B</h1>
+        <h1 v-else-if="type === 'C'">C</h1>
+        <h1 v-else>看不见我</h1>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+       el:"#vue",
+       data:{
+           type:'B'
+       }
+    });
+</script>
+
+</body>
+</html>
