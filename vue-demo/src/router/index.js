@@ -14,31 +14,32 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/goMain',
-      redirect: '/main',
-    },
+    // { path: '/goMain',
+    //   redirect: '/main',
+    // },
+    // {
+    //   path: '/login',
+    //   // name: 'Login',
+    //   component: Login
+    // },
     {
       path: '/login',
       // name: 'Login',
       component: Login
-    },
-    {
-      path: '/',
-      // name: 'Login',
-      component: Login
-    },{
-      path: '/main',
-      // name: 'Main',
-      component: Main,
-      // 配置嵌套路由
-      children: [
-        // {path: '/user/profile/:id', name:"UserProfile",component: UserProfile},
-        {path: '/user/profile/:id', name:'UserProfile', component: UserProfile, props: true},
-        {path: '/user/list', component: UserList},
-      ]
-    }, {
-      path: '*',
-      component: NotFound
     }
+    // },{
+    //   path: '/main',
+    //   // name: 'Main',
+    //   component: Main,
+    //   // 配置嵌套路由
+    //   children: [
+    //     // {path: '/user/profile/:id', name:"UserProfile",component: UserProfile},
+    //     {path: '/user/profile/:id', name:'UserProfile', component: UserProfile, props: true},
+    //     {path: '/user/list', component: UserList},
+    //   ]
+    // }, {
+    //   path: '*',
+    //   component: NotFound
+    // }
   ]
 })
