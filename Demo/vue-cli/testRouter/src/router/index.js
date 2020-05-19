@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//import Content from '../components/Content'
+import Content from '../components/Content'
 import Login from '../views/login'
 import Main from '../views/main'
 // 用于嵌套的路由组件
@@ -14,6 +14,9 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    { path: '/content',
+      component:Content
+    },
     { path: '/goMain',
       redirect: '/main',
     },

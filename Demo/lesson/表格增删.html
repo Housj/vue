@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>品牌名称<input type="text" v-model='name'/></span>
+        <input type="button" value="添加" @click='add' /><br/>
+        <span>品牌名称<input type="text" value="请输入搜索条件" id="searName"/></span>
+        <table style="text-align: left;text-indent: 10px;">
+            <th><td>编号</td><td>名字</td><td>时间</td><td>操作</td></th>
+            <tr v-for="item in items">
+                <td>{{item.index}}</td>
+                <td>{{item.index}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.date}}</td>
+                <td><a href="#" @click='remove('{{item.index}}')'>删除</a></td>
+            </th>
+        </table>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+       el:"#app",
+       data: {
+                items: [{
+                        name: 'LV',
+                        date: '2018-8-1'
+                    }, {
+                        name: 'Lenovo',
+                        date: '2018-8-1'
+                    }, {
+                        name: 'TCL',
+                        date: '2018-8-1'
+                    }
+
+                ],
+                name:''
+            },
+            methods: {
+                add(){
+                    this.items.push({
+                        name:this.name,
+                        data:new Date()
+                    })
+                },
+                remove(name){
+                    
+                }
+            }
+    });
+</script>
+
+</body>
+</html>

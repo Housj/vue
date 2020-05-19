@@ -5,21 +5,36 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="vue">
+        {{message}}
+    </div>
     <div id="app">
       <button v-on:click="say">点我</button>
+      <button v-on:click="fn2()">点我</button>
+      {{str}}
+      <p v-text="str"></p>
+      <p v-html="str"></p> v-html 可以识别字符串的标签
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
 <script type="text/javascript">
     var vm = new Vue({
        el:"#app",
         data:{
-           message:"111"
+           message:"111",
+           str:'<span onclick="alert(2)"><a href="#">span标签-点我</a></span>'
         },
         methods:{
            say:function (event) {
                 alert(this.message)
+           },
+           fn2(arg){
+               alert(arg)
            }
         }
+    });
+    var vm2 = new Vue({
+        el:".vue",
+        data:{message:"222"}
     });
 </script>
 
