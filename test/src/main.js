@@ -29,7 +29,8 @@ router.beforeEach((to, form, next) => {
 
   // 如果请求的是登录页
   else if (to.path == '/login') {
-    if (isLogin == 1) {
+
+    if (isLogin === 1) {
       // 跳转到首页
       next({path: '/main'});
     }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!-- 3. 使用子组件时,通过动态绑定自定义属性获取父组件的值 -->
+    <component-a :title="msg" :lists="items"></component-a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    var ComponentA = {
+        // 1. 在子组件中通过props声明自定义属性title
+        template: `<div>
+<h1>{{ title }}</h1>
+<ul>
+<li  v-for="item in lists">
+{{item.name}}
+    </li>
+    </ul> 
+    </div>`,
+        // 用来接收外部传过来的数据
+        // 值的传递是单向的，内部不要修改props里变量的值
+        props: ['title', 'lists']
+    };
+
+    new Vue({
+        el: '#app',
+        // 目的: 要在子组件中使用父组件的msg的值
+        data: {
+            msg: 'hello heima',
+            items: [{
+                'id': 1,
+                'name': '小狗'
+            }, {
+                'id': 2,
+                'name': '小猫'
+            }, {
+                'id': 3,
+                'name': '小羊'
+            }
+
+                   ]
+        },
+        // 2. 注册局部组件
+        components: {
+            'component-a': ComponentA
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 页面中有多个一样结构的标签: span+button -->
+        <!-- <span>{{count1}}</span> <button @click="changeCount1">按钮</button> <br>
+ <span>{{count2}}</span> <button @click="changeCount2">按钮</button> <br>
+ <span>{{count3}}</span> <button @click="changeCount3">按钮</button> <br>
+ <span>{{count4}}</span> <button @click="changeCount4">按钮</button> <br>
+ <span>{{count5}}</span> <button @click="changeCount5">按钮</button> <br> -->
+        <span-btn></span-btn>
+        <span-btn></span-btn>
+
+        <parent-Com></parent-Com>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script type="text/javascript">
+        Vue.component('span-btn', {
+            template: '<div><span>{{count}}</span><button @click="changeCount">按钮</button></div>',
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                changeCount() {
+                    this.count++;
+                }
+            }
+        });
+        // 1. 注册全局组件
+        Vue.component('childCom', {
+            template: `
+                <div>
+                <h1>childCom全局组件</h1>
+                    </div>
+                `
+        });
+        Vue.component('parentCom', {
+            // 在parentCom中嵌入childCom组件
+            // parentCom和childCom属于父子组件
+            // 父组件是parentCom
+            // 子组件是childCom
+            template: `
+                <div>
+                <h1>parentCom全局组件</h1>
+                <child-Com></child-Com>
+                    </div>
+                `
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                count1: 0,
+                count2: 0,
+                count3: 0,
+                count4: 0,
+                count5: 0
+            },
+            methods: {
+                changeCount1() {
+                    this.count1++;
+                },
+                changeCount2() {
+                    this.count2++;
+                },
+                changeCount3() {
+                    this.count3++;
+                },
+                changeCount4() {
+                    this.count4++;
+                },
+                changeCount5() {
+                    this.count5++;
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 哪一个是被激活的链接 */
+        .router-link-exact-active.router-link-active {
+            color: aqua;
+        }
+
+        li {
+            float: left;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            clear: both;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1. 设置链接-->
+        <!-- router-link 最终会被渲染成a标签，to指定路由的跳转地址 -->
+        <ul>
+            <router-link tag="li" to="/users/120">用户管理</router-link>
+            <router-link tag="li" to="/Home">home</router-link>
+            <router-link tag="li" to="/aaa">AAA</router-link>
+            <!-- <router-link tag="li" :to="test">test</router-link> -->
+            <!-- <input type="button" @click="change()" value="测试" /> -->
+        </ul>
+        <!-- 2. 设置容器-->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view class="container"></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript">
+        // 3. 提供要渲染的组件
+        // 组件也可以放到单独的js文件中
+        var Home = {
+            template: '<div>这是Home内容</div>'
+        };
+        var Users = {
+            template: '<div>这是用户管理内容,用户id为{{$route.params.id}}</div>'
+        };
+        var AAA = {
+            // <!-- 二级路由匹配到的组件将渲染在这里 -->
+            template: `<div>
+<ul>
+<li><router-link to='/aaa/a/111'>a</router-link></li>
+<li><router-link to='/aaa/b'>b</router-link></li>
+    </ul>
+<router-view class="box"></router-view>
+            </div>`
+        };
+        // var AAAChildren = {
+        //     template: '<div>1我是AAA,来自{{$route.params.idd}}</div>'
+        // };
+        var A = {
+            // props:['idd'],
+            template: '<div>我是A</div>'
+        };
+        var B = {
+            template: '<div>隋东风</div>'
+        };
+        // 4.配置路由规则
+        var router = new VueRouter({
+            routes: [
+                //重定向，强制修改url
+                // {path:'/',redirect:{ path:'/aaa'}},
+                { path: '/', redirect: { name: 'home' } },
+                { name: 'home', path: '/Home', component: Home },
+                { name: 'users', path: '/users/:id', component: Users },
+                {
+                    name: 'aaa', path: '/aaa', component: AAA, children: [{
+                        path: 'a', componen: A,
+                    }, {
+                        path: 'b', componen: B,
+                    }]
+                },
+                //没有匹配的路由规则，进入下面的组件
+                { path: '*', component: AAA }
+            ]
+        });
+        // 5. 挂载路由
+        var vm = new Vue({
+            el: '#app',
+            router,
+            // data() {
+            //     return {
+            //         test: "/aaa"
+            //     }
+            // },
+            methods: {
+                change() {
+                    this.$router.push({ name: 'aaa' })
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
