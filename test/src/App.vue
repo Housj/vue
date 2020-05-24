@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <router-link to="/login">登陆</router-link>
-    <router-link to="/helloWorld">首页</router-link>
+    <!-- <router-link to="/login">登陆</router-link>
+    <router-link to="/helloWorld">首页</router-link> -->
     <router-view></router-view>
     <!--<img src="./assets/logo.png">-->
-    <HelloWorld/>
+    <!-- <HelloWorld/> -->
   </div>
 </template>
 

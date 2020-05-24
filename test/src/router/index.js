@@ -16,11 +16,11 @@ Vue.prototype.axios = Axios;
 Vue.use(Router);
 
 export default new Router({
-  routes: [
+  routes: [ 
     {
-           path: '/helloWorld',
-           name: 'HelloWorld',
-           component: HelloWorld
+      path: '/helloWorld',
+      name: 'HelloWorld',
+      component: HelloWorld
     },{
       path: '/',
       name:"",
@@ -41,11 +41,16 @@ export default new Router({
       component: Main,
       //配置嵌套路由
         children: [
-          // {path: '/user/profile/:id', name:"UserProfile",component: UserProfile},
-          {path: '/user/profile/:id', name:'UserProfile', component: UserProfile, props: true},
+          {path: '/user/profile/:id', name:"UserProfile",component: UserProfile},
+          // {path: '/user/profile/:id', name:'UserProfile', component: UserProfile, props: true},
           {path: '/user/list',name:'UserList', component: UserList}
         ]
-    },{
+    },
+    // {
+    //   path:'/logout',
+    //   redirect:'login'
+    // },
+    {
       path: '*',
       component: NotFound
     }
