@@ -22,7 +22,7 @@ class SpringbootControllerApplicationTests {
 
         List<User> lists = userRepository.findAll();
         lists.forEach(user -> {
-            System.out.println(user.sname);
+            System.out.println(user.name);
         });
     }
 

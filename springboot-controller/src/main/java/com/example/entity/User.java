@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * @author sergei
@@ -22,8 +23,12 @@ public class User {
     @Id
     @GeneratedValue
     public Long id;
-    @Column(name = "sname")
-    public String sname;
-    @Column(name = "score")
-    public String score;
+    @Column(name = "name")
+    public String name;
+    @Column(name = "password")
+    public String password;
+    @Column(name = "status")
+    public Integer status;
+    @Column(name = "create_date")
+    public Date createDate;
 }
