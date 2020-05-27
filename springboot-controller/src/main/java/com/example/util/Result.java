@@ -13,7 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class Result<T> implements Serializable {
-    int code;
+    Integer code;
     List<T> datas;
     T data;
+    Integer pageNum;
+    Integer count;
 }
